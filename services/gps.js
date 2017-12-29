@@ -1,7 +1,7 @@
 
 import {saveHashKeyValue, getAllDocHashes} from './storage';
 
-const delivaryMenDoc = process.env.DELIVARY_MAN_DOC || 'delivarymen';
+const deliveryMenDoc = process.env.DELIVERY_MEN_DOC || 'deliverymen';
 
-export const updateDeliveryManPosition = async (deliveryManId, gps)=> await saveHashKeyValue(delivaryMenDoc, deliveryManId, gps);
-export const getAvailbleDeliveryMen = async ()=> await getAllDocHashes(delivaryMenDoc);
+export const updateDeliveryManPosition = async (deliveryManId, gps)=> await saveHashKeyValue(deliveryMenDoc, deliveryManId, gps);
+export const getAvailbleDeliveryMen = async ()=> await getAllDocHashes(deliveryMenDoc);
