@@ -4,6 +4,6 @@ import { updateDeliveryManPosition, getAvailbleDeliveryMen } from './services/gp
 
 (async ()=>{
     console.log(await updateDeliveryManPosition('700', 'geogeo'));
-    console.log(await getAvailbleDeliveryMen());
+    // console.log(await getAvailbleDeliveryMen());
 })();
 

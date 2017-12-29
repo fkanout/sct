@@ -1,13 +1,11 @@
 import bluebird from 'bluebird';
 import redis from 'redis';
+import { errorHandler } from './errorHandler';
 const client = redis.createClient();
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
-client.on("error", function (err) {
-    console.log("Error " + err);
-});
-
+client.on("error", (err => errorHandler(err)));
 client.on("ready", function () {
     console.log("Redis is ready ... ");
 });
@@ -15,9 +13,9 @@ client.on("ready", function () {
 export const saveHashKeyValue = async (doc, key, value, db='redis')=>{
     let savedData;
     try{
-        savedData = await client.hsetAsync(doc, key, value);
+        savedData = await client.hsetAsync( key, value);
     }catch(err){
-        console.log(err);
+        errorHandler(err);
     }
     return savedData;
 }
@@ -28,7 +26,7 @@ export const getAllDocHashes = async (doc, db='redis')=>{
     try{
         fetchedData = await client.hgetallAsync(doc);
     }catch(err){
-        console.log(err);
+        errorHandler(err);
     }
     return fetchedData;
 }
