@@ -1,6 +1,6 @@
 import bluebird from 'bluebird';
 import redis from 'redis';
-import { errorHandler } from './errorHandler';
+import errorHandler from './errorHandler';
 
 const client = redis.createClient();
 

@@ -1,5 +1,5 @@
 
-export const errorHandler = (errorObject) => {
+const errorHandler = (errorObject) => {
   console.log(errorObject);
 };
-
+export default errorHandler;
