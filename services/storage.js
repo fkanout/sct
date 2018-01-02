@@ -14,7 +14,7 @@ client.on('ready', () => {
 export const saveHashKeyValue = async (doc, key, value, db = 'redis') => {
   let savedData;
   try {
-    savedData = await client.hsetAsync(key, value);
+    savedData = await client.hsetAsync(doc, key, value);
   } catch (err) {
     errorHandler(err);
   }
