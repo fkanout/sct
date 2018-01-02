@@ -11,7 +11,7 @@ client.on('ready', () => {
   console.log('Redis is ready ... ');
 });
 
-export const saveHashKeyValue = async (doc, key, value, db = 'redis') => {
+export const saveHashKeyValue = async (doc, key, value) => {
   let savedData;
   try {
     savedData = await client.hsetAsync(doc, key, value);
@@ -22,7 +22,7 @@ export const saveHashKeyValue = async (doc, key, value, db = 'redis') => {
 };
 
 
-export const getAllDocHashes = async (doc, db = 'redis') => {
+export const getAllDocHashes = async (doc) => {
   let fetchedData;
   try {
     fetchedData = await client.hgetallAsync(doc);
