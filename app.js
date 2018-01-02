@@ -1,4 +1,3 @@
-
 import { updateDeliveryManPosition, getAvailbleDeliveryMen } from './services/gps';
 
 
