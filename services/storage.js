@@ -2,7 +2,7 @@ import bluebird from 'bluebird';
 import redis from 'redis';
 import errorHandler from './errorHandler';
 
-const client = redis.createClient();
+const client = redis.createClient({ host: process.env.REDIS_HOST, port: process.env.REDIS_HOST });
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);

@@ -1,4 +1,3 @@
-
 import { saveHashKeyValue, getAllDocHashes } from './storage';
 
 const deliveryMenDoc = process.env.DELIVERY_MEN_DOC || 'deliverymen';
