@@ -1,11 +1,12 @@
-import bluebird from 'bluebird';
+import { Promise } from 'bluebird';
 import redis from 'redis';
 import errorHandler from './errorHandler';
 
+Promise.promisifyAll(redis.RedisClient.prototype);
+Promise.promisifyAll(redis.Multi.prototype);
+
 const client = redis.createClient({ host: process.env.REDIS_HOST, port: process.env.REDIS_HOST });
 
-bluebird.promisifyAll(redis.RedisClient.prototype);
-bluebird.promisifyAll(redis.Multi.prototype);
 client.on('error', (err => errorHandler(err)));
 client.on('ready', () => {
   console.log('Redis is ready ... ');
