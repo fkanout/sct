@@ -26,7 +26,11 @@ export const calculeteRoute = async (points) => {
   try {
     const res = await request(options);
     const { routes } = JSON.parse(res);
-    return routes[0];
+    response = {
+      travelTimeInMin: Math.round(routes[0].summary.liveTrafficIncidentsTravelTimeInSeconds / 60),
+      lengthInKm: Math.round(routes[0].summary.lengthInMeters / 1000),
+    };
+    return response;
   } catch (err) {
     errorHandler(err);
   }
